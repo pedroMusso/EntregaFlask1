@@ -2,7 +2,7 @@ from app.modules import BaseModel
 from app.user.models import User
 from extensions import db
 
-class cuponsdedesconto(BaseModel):
+class Cuponsdedesconto(BaseModel):
     __tablename__ = 'CuponsdeDesconto'
 
     id = db.Column(db.Integer, primary_Key = True, autoincrement=True)

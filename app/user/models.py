@@ -13,8 +13,8 @@ class User(BaseModel):
     name = db.Column(db.String(70))
     email = db.Column(db.String(70), unique=True, index=True)
     telefone = db.Column(db.String(11), unique = True)
-    Pedidos = db.relationship('carros','motos')
-    Cupons = db.relationship('cuponsdedesconto')
+    Pedidos = db.relationship('Carros','Motos')
+    Cupons = db.relationship('Cuponsdedesconto')
 
     def json(self):
         return {

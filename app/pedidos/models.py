@@ -2,11 +2,11 @@ from app.modules import BaseModel
 from app.extensions import db
 from flask import Blueprint
 
-Carros_api = Blueprint('Carros_api', __name__)
-Motos_api = Blueprint('Motos_api', __name__)
+Carros_api = Blueprint('carros_api', __name__)
+Motos_api = Blueprint('motos_api', __name__)
 
-class carros(BaseModel):
-    __tablename__ = 'Carros'
+class Carros(BaseModel):
+    __tablename__ = 'carros'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     modelo = db.Column(db.String(70))
@@ -29,8 +29,8 @@ class carros(BaseModel):
             "quatidade":self.quantidade
         }
 
-class motos(BaseModel):
-    __tablename__ = 'Motos'
+class Motos(BaseModel):
+    __tablename__ = 'motos'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     modelo = db.Column(db.String(70))
