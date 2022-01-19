@@ -1,23 +1,30 @@
+
+from tkinter import INSERT, ON
+from tkinter.tix import COLUMN, Select
 from app.modules import BaseModel
+from app.pedidos.models import carros,motos
+from app.user.models import User
 from app.extensions import db
 from flask import Blueprint
 
 entrega_api = Blueprint('entrega_api', __name__)
 
 class Entrega(BaseModel):
-    _tablename__ = 'entregas'
+    __tablename__ = 'entregas'
 
-    id = db.Column(db.Interger, primary_key = True, autoincrement = True)
-    pedidos = db.relationship('StatusEntrega')
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.ForeignKey('user.id'))
+    pedidos = db.relationship('Carrinho de Compras')
 
 class carrinhodecompras(BaseModel):
     __tablename__= 'Carrinho de Compras'
-    id = db.Column(db.Interger, primaryKey=True, autoincrement=True)
-    entrega_id = db.Column(db.ForeignKey('entrega.id'))
-    carros_id = db.Column(db.ForeignKey('carros.id'))
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    entrega_id = db.Column(db.ForeignKey('entregas.id'))
+    carros_id = db.Column(db.ForeignKey('Carros.id'))
     motos_id = db.Column(db.ForeignKey('Motos.id'))
-    preco = db.column(sum(db.select(carros_id/'preco'),db.select(motos_id/'preco')))
-    entregou = db.Column(db.boolean, default = False)
+    preco = db.Column(db.Integer)
+    entregou = db.Column(db.Boolean, default = False)
 
     carros = db.relationship('carros')
     motos = db.relationship('motos')

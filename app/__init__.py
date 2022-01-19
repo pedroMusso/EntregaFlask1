@@ -6,9 +6,9 @@ from app.entrega.models import entrega_api
 from app.pedidos.models import Carros_api, Motos_api
 from app.user.models import user_api
 
-def creat_app():
+def create_app():
 
-    app = Flask(__name__)
+    app=Flask(__name__)
     app.config.from_object(Config)
 
     db.init_app(app)

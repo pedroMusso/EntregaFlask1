@@ -1,6 +1,6 @@
 from app.extensions import db
 
-class BaseModel(db.model):
+class BaseModel(db.Model):
 
     __abstract__ = True
 
